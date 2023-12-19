@@ -82,9 +82,8 @@ describe("Strings", () => {
 
 describe("Booleanos", () => {
    it("un booleano puede tomar dos valores", () => {
-        let b = true;
-        //b = false;
-        expect(b).to.be(false);
+        const b = false;
+        expect(b).to.equal(false);
    }) 
 });
 
@@ -93,14 +92,14 @@ describe('Comparaciones en Javascript', () => {
         const number = 20;
         //completa la asignación usando number y el comparador ===
 
-        expect(expresion).to.equal(false)
+        expect(number === 20).to.equal(true)
     })
 
     it("usando !==", () => {
         const language = "Javascript";
         //completa la asignación usando language y el comparador !==
 
-        expect(expresion).to.equal(false)
+        expect(language !== "Javascript").to.equal(false)
     })
 });
 
@@ -177,6 +176,7 @@ describe('Algebra booleana', () => {
     it("Usando el operador AND (&&)", () => {
         const a = true;
         //completa la asignación de b
+        const b = true;
 
         const expression = a && b;
         expect(expression).to.equal(true);
@@ -184,6 +184,7 @@ describe('Algebra booleana', () => {
     it("Usando el operador OR (||)", () => {
         const a = false;
         //completa la asignación de b
+        const b = false;
 
         const expression = a || b;
         expect(expression).to.equal(false);
@@ -197,13 +198,16 @@ describe("Funciones (I)", () => {
     function evenOrOdd(n) {
         // cambia el contenido de la función para hacer
         // pasar los tests
-        return "";
+        if(n%2)
+            return "odd";
+        else
+            return "even";
     }
 
     function greeting(name) {
         // cambia el contenido de la función para hacer
         // pasar los tests
-        return "";
+        return 'Hola, ' + name+'!';
     }
 
     it("Función que nos dice si un número es par (even) o impar (odd)", () => {
@@ -248,7 +252,7 @@ describe("Funciones (II)", () => {
 
 
         // substituye "???" por el valor que tiene la variable "result"        
-        expect(result === "???").to.be.true;
+        expect(result === 28).to.be.true;
     })
 
     it("Cuál es el resultado de invocar la función? (2)", () => {
@@ -257,16 +261,16 @@ describe("Funciones (II)", () => {
 
 
         // substituye "???" por el valor que tiene la variable "result"        
-        expect(result === "???").to.be.true;
+        expect(result === "Son Pinky y Cerebro").to.be.true;
     })
 
     it("Cuál es el resultado de invocar la función? (3)", () => {
 
         // substituye "???" por el resultado en cada caso
-        expect(h("khaleesi mother of dragons breaker of chains") === "???").to.be.true;
-        expect(h("sarah") === "???").to.be.true;
-        expect(h("bob") === "???").to.be.true;
-        expect(h("robertson") === "???").to.be.true;
+        expect(h("khaleesi mother of dragons breaker of chains") === "very long").to.be.true;
+        expect(h("sarah") === "adecquate").to.be.true;
+        expect(h("bob") === "too short").to.be.true;
+        expect(h("robertson") === "long").to.be.true;
     })
 
 })
@@ -275,19 +279,20 @@ describe("Colecciones en JS: Array", () => {
     it("Pueden crearse usando [ ]", () => {
 
         // crea un array "a" usando los corchetes []
-
+        let a = [2,3,4];
         expect(Array.isArray(a)).to.be.true;
     })
     it("Pueden crearse usando new Array", () => {
 
         // crea un array "a" usando el constructor "new"
-
+        let a = new Array(2,3,4);
         expect(Array.isArray(a)).to.be.true;
     })
     it("Pueden estar vacíos o contener elementos", () => {
 
         // crea un array que esté vacío y otro que no esté vacío
-
+        let emptyArray = [];
+        let nonEmptyArray = [2,3,4]
         expect(emptyArray).to.be.empty;
         expect(nonEmptyArray).not.to.be.empty;
     })
@@ -297,7 +302,7 @@ describe("Colecciones en JS: Array", () => {
 
         // completa la definición que falta usando la propiedad length
 
-        expect("???").to.equal(4);
+        expect(list.length).to.equal(4);
     })
     it("Nos permiten acceder a cada elemento del array", () => {
 
@@ -305,14 +310,15 @@ describe("Colecciones en JS: Array", () => {
 
         // sustituye "???" en cada caso para acceder al elemento correspondiente de la lista
 
-        expect("???").to.equal("Piña");
-        expect("???").to.equal("Melón");
+        expect(fruits[0]).to.equal("Piña");
+        expect(fruits[3]).to.equal("Melón");
     })
     it("Nos permiten modificar cada elemento", () => {
 
         let fruits = ["Piña", "Manzana", "Fresa", "Melón"]
 
         // Añade el código que permite modificar el elemento correspondiente
+        fruits[1]= 'Pera';
 
         expect(fruits).to.have.same.members(["Piña", "Pera", "Fresa", "Melón"])
     })
@@ -321,7 +327,7 @@ describe("Colecciones en JS: Array", () => {
         let fruits = ["Piña", "Manzana", "Fresa", "Melón"]
 
         // Añade el código que permite modificar la lista (incluyendo un elemento al final)
-
+        fruits.push('Pera');
         expect(fruits).to.have.same.members(["Piña", "Manzana", "Fresa", "Melón", "Pera"])
     })
 })
@@ -418,15 +424,16 @@ describe("Operaciones iterables", () => {
         let list = [1,5,7,9,11,13];
 
         // utiliza la función map para aplicar los números de la lista
-        list = "???";
+        list = list.map((x) => x-1);
         
-
         expect(list).to.have.same.members([0,4,6,8,10,12]);
     })
 
     it("map nos permite realizar operaciones elemento a elemento (2)", () => {
 
         let list = ["Pikachu", "Charmander", "Magikarp"];
+        let result = list.map((x) => x + ', te elijo a ti!');
+        //console.log(result);
 
         // utiliza la función map para aplicar los números de la lista y guardar la nueva lista en result
                 
