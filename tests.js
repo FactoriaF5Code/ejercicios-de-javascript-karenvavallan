@@ -449,7 +449,8 @@ describe("Operaciones iterables", () => {
         let knownExoplanets = [ "TOI-1298 b","TOI-132 b","TOI-1333 b","TOI-1338 b","TOI-1431 b","TOI-1444 b","TOI-1478 b","TOI-150.01","TOI-157 b","TOI-1601 b","TOI-163 b","TOI-1634 b","TOI-1685 b","TOI-169 b","TOI-172 b","TOI-1728 b","TOI-1749 b","TOI-1749 c"];
 
         // utiliza la función includes para comprobar si la lista de planetas contiene el planeta TOI-1634 b
-        let result = "???";
+        let result = knownExoplanets.includes("TOI-1634 b");
+        //let result = "???";
         
         expect(result).to.equal(true);        
     })
@@ -461,8 +462,11 @@ describe("Operaciones iterables", () => {
         // utiliza la función filter para quedarnos con los planetas que terminan por la letra c
         // puedes utilizar la función .endsWith para comprobar si un string termina por una letra
         // p.ej. "Hola".endsWith('a') devuelve true
-        let result = "???";
-        
+        let result = [];
+        for(let i=0, j=0;i<knownExoplanets.length;i++){
+            if(knownExoplanets[i].endsWith('c'))
+                result[j++] = knownExoplanets[i];
+        }
 
         // todos los planetas de result terminan con la letra c
         expect(result.every( p => p.endsWith('c'))).to.equal(true);        
